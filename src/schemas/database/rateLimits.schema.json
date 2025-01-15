@@ -1,0 +1,43 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "description": "Rate limiting configuration and tracking",
+    "required": ["id", "tenantId", "type", "limits"],
+    "properties": {
+        "id": {
+            "type": "string",
+            "description": "Unique identifier"
+        },
+        "tenantId": {
+            "type": "string",
+            "description": "Associated tenant organization"
+        },
+        "type": {
+            "type": "string",
+            "enum": ["api", "endpoint", "user", "ip"],
+            "description": "Type of rate limit"
+        },
+        "target": {
+            "type": "string",
+            "description": "Specific endpoint, user ID, or IP address"
+        },
+        "limits": {
+            "type": "object",
+            "properties": {
+                "requestsPerSecond": { "type": "number" },
+                "requestsPerMinute": { "type": "number" },
+                "requestsPerHour": { "type": "number" },
+                "requestsPerDay": { "type": "number" },
+                "concurrentRequests": { "type": "number" }
+            }
+        },
+        "currentUsage": {
+            "type": "object",
+            "properties": {
+                "requestCount": { "type": "number" },
+                "lastRequest": { "type": "string", "format": "date-time" },
+                "windowStart": { "type": "string", "format": "date-time" }
+            }
+        }
+    }
+} 

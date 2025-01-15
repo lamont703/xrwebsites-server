@@ -11,7 +11,10 @@
     "test:create-job": "tsx src/tests/createTestJob.ts",
     "test:rbac": "tsx src/tests/rbac.test.ts",
     "test:tenancy": "tsx src/tests/multiTenancy.test.ts",
-    "test:logging": "tsx src/tests/logging.test.ts"
+    "test:logging": "tsx src/tests/logging.test.ts",
+    "test:ratelimit": "tsx src/tests/rateLimiter.test.ts",
+    "test:redis": "tsx src/tests/redis.test.ts",
+    "test:ratelimit:final": "tsx src/tests/rateLimiter.final.test.ts"
   },
   "keywords": [],
   "author": "",
@@ -46,6 +49,7 @@
     "express-validator": "^7.2.1",
     "helmet": "^8.0.0",
     "http": "^0.0.1-security",
+    "ioredis": "^5.4.2",
     "jsonwebtoken": "^9.0.2",
     "morgan": "^1.10.0",
     "multer": "^1.4.5-lts.1",
