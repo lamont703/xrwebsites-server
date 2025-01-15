@@ -1,50 +1,45 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "type": "object",
-    "description": "Analytics schema",
-    "required": ["id", "entityId", "entityType", "timeframe"],
+    "description": "Analytics data schema",
+    "required": ["id", "tenantId", "type", "timestamp"],
     "properties": {
         "id": {
             "type": "string",
             "description": "Unique identifier"
         },
-        "entityId": {
+        "tenantId": {
             "type": "string",
-            "description": "ID of entity being tracked"
+            "description": "Associated tenant organization"
         },
-        "entityType": {
+        "type": {
             "type": "string",
-            "enum": ["user", "job", "asset", "global"]
+            "enum": ["job_metrics", "user_activity", "financial", "performance"],
+            "description": "Type of analytics data"
         },
-        "timeframe": {
-            "type": "string",
-            "enum": ["hourly", "daily", "weekly", "monthly"]
-        },
-        "metrics": {
+        "data": {
             "type": "object",
+            "description": "Analytics data payload",
             "properties": {
-                "views": { "type": "number" },
-                "interactions": { "type": "number" },
-                "conversions": { "type": "number" },
-                "revenue": { "type": "number" },
-                "activeUsers": { "type": "number" }
+                "metrics": {
+                    "type": "object",
+                    "description": "Key-value pairs of metrics"
+                },
+                "dimensions": {
+                    "type": "object",
+                    "description": "Categorization dimensions"
+                }
             }
         },
-        "segments": {
-            "type": "object",
-            "properties": {
-                "location": { "type": "object" },
-                "device": { "type": "object" },
-                "userType": { "type": "object" }
-            }
-        },
-        "startDate": {
+        "timestamp": {
             "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "description": "When this data point was recorded"
         },
-        "endDate": {
+        "period": {
             "type": "string",
-            "format": "date-time"
+            "enum": ["hourly", "daily", "weekly", "monthly"],
+            "description": "Time period this data represents"
         }
     }
 }

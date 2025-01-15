@@ -1,0 +1,52 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "description": "Tenant organization schema",
+    "required": ["id", "name", "status", "tier"],
+    "properties": {
+        "id": {
+            "type": "string",
+            "description": "Unique tenant identifier"
+        },
+        "name": {
+            "type": "string",
+            "description": "Organization name"
+        },
+        "status": {
+            "type": "string",
+            "enum": ["active", "suspended", "inactive"],
+            "description": "Tenant status"
+        },
+        "tier": {
+            "type": "string",
+            "enum": ["basic", "professional", "enterprise"],
+            "description": "Service tier"
+        },
+        "settings": {
+            "type": "object",
+            "properties": {
+                "maxUsers": { "type": "number" },
+                "maxJobs": { "type": "number" },
+                "maxStorage": { "type": "number" },
+                "customDomain": { "type": "boolean" },
+                "analyticsEnabled": { "type": "boolean" }
+            }
+        },
+        "contactInfo": {
+            "type": "object",
+            "properties": {
+                "email": { "type": "string" },
+                "phone": { "type": "string" },
+                "address": { "type": "string" }
+            }
+        },
+        "createdAt": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+        }
+    }
+} 

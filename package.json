@@ -9,7 +9,8 @@
     "dev:ws": "nodemon --exec tsx src/tests/realtime.test.ts",
     "build:ws": "tsc src/tests/realtime.test.ts",
     "test:create-job": "tsx src/tests/createTestJob.ts",
-    "test:rbac": "tsx src/tests/rbac.test.ts"
+    "test:rbac": "tsx src/tests/rbac.test.ts",
+    "test:tenancy": "tsx src/tests/multiTenancy.test.ts"
   },
   "keywords": [],
   "author": "",

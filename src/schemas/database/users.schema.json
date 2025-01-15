@@ -1,12 +1,16 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "type": "object",
-    "description": "User document schema with RBAC",
-    "required": ["id", "email", "roles", "status"],
+    "description": "User document schema with RBAC and tenant support",
+    "required": ["id", "email", "roles", "status", "tenantId"],
     "properties": {
         "id": {
             "type": "string",
             "description": "Unique identifier"
+        },
+        "tenantId": {
+            "type": "string",
+            "description": "Associated tenant organization"
         },
         "type": {
             "type": "string",

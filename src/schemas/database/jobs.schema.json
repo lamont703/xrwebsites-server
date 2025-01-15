@@ -1,12 +1,16 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "type": "object",
-    "description": "Job listing schema",
-    "required": ["id", "creatorId", "title", "status"],
+    "description": "Job listing schema with tenant support",
+    "required": ["id", "tenantId", "creatorId", "title", "status"],
     "properties": {
         "id": {
             "type": "string",
             "description": "Unique identifier"
+        },
+        "tenantId": {
+            "type": "string",
+            "description": "Associated tenant organization"
         },
         "creatorId": {
             "type": "string",
