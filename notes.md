@@ -245,3 +245,4 @@ Then create project structure
 Connect to Azure Database
 Test connection to database
 Create database and containers
+Work on database features and testing 
