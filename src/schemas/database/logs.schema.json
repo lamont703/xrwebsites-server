@@ -1,0 +1,93 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "description": "Event logging and audit trail schema",
+    "required": ["id", "eventType", "timestamp", "tenantId"],
+    "properties": {
+        "id": {
+            "type": "string",
+            "description": "Unique identifier"
+        },
+        "tenantId": {
+            "type": "string",
+            "description": "Associated tenant organization"
+        },
+        "eventType": {
+            "type": "string",
+            "enum": [
+                "user.login",
+                "user.logout",
+                "user.created",
+                "user.updated",
+                "user.deleted",
+                "job.created",
+                "job.updated",
+                "job.deleted",
+                "job.bid.submitted",
+                "job.bid.accepted",
+                "asset.created",
+                "asset.updated",
+                "asset.deleted",
+                "asset.purchased",
+                "payment.initiated",
+                "payment.completed",
+                "payment.failed",
+                "system.error",
+                "system.warning",
+                "admin.action"
+            ],
+            "description": "Type of event"
+        },
+        "severity": {
+            "type": "string",
+            "enum": ["info", "warning", "error", "critical"],
+            "description": "Event severity level"
+        },
+        "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "description": "When the event occurred"
+        },
+        "actor": {
+            "type": "object",
+            "properties": {
+                "id": { "type": "string" },
+                "type": { 
+                    "type": "string",
+                    "enum": ["user", "system", "admin", "service"]
+                },
+                "ip": { "type": "string" },
+                "userAgent": { "type": "string" }
+            },
+            "required": ["id", "type"]
+        },
+        "target": {
+            "type": "object",
+            "properties": {
+                "id": { "type": "string" },
+                "type": { 
+                    "type": "string",
+                    "enum": ["user", "job", "asset", "payment", "system"]
+                },
+                "name": { "type": "string" }
+            }
+        },
+        "changes": {
+            "type": "object",
+            "description": "Before/after values for update events",
+            "properties": {
+                "before": { "type": "object" },
+                "after": { "type": "object" }
+            }
+        },
+        "metadata": {
+            "type": "object",
+            "description": "Additional contextual information"
+        },
+        "status": {
+            "type": "string",
+            "enum": ["success", "failure", "pending"],
+            "description": "Outcome of the event"
+        }
+    }
+} 
