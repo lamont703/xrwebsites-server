@@ -14,7 +14,8 @@
     "test:logging": "tsx src/tests/logging.test.ts",
     "test:ratelimit": "tsx src/tests/rateLimiter.test.ts",
     "test:redis": "tsx src/tests/redis.test.ts",
-    "test:ratelimit:final": "tsx src/tests/rateLimiter.final.test.ts"
+    "test:ratelimit:final": "tsx src/tests/rateLimiter.final.test.ts",
+    "test:cache": "tsx src/tests/cache.test.ts"
   },
   "keywords": [],
   "author": "",
