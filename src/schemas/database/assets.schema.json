@@ -1,0 +1,77 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "description": "Digital asset schema",
+    "required": ["id", "ownerId", "title", "status"],
+    "properties": {
+        "id": {
+            "type": "string",
+            "description": "Unique identifier"
+        },
+        "ownerId": {
+            "type": "string",
+            "description": "Asset owner's ID"
+        },
+        "type": {
+            "type": "string",
+            "enum": ["asset"]
+        },
+        "assetType": {
+            "type": "string",
+            "enum": ["nft", "3d", "ar", "vr"]
+        },
+        "title": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 100
+        },
+        "description": {
+            "type": "string",
+            "maxLength": 5000
+        },
+        "status": {
+            "type": "string",
+            "enum": ["draft", "listed", "sold", "hidden"]
+        },
+        "price": {
+            "type": "object",
+            "properties": {
+                "amount": { "type": "number" },
+                "currency": { "type": "string" }
+            }
+        },
+        "metadata": {
+            "type": "object",
+            "properties": {
+                "fileUrl": { "type": "string" },
+                "thumbnailUrl": { "type": "string" },
+                "format": { "type": "string" },
+                "size": { "type": "number" },
+                "dimensions": {
+                    "type": "object",
+                    "properties": {
+                        "width": { "type": "number" },
+                        "height": { "type": "number" },
+                        "depth": { "type": "number" }
+                    }
+                }
+            }
+        },
+        "tags": {
+            "type": "array",
+            "items": { "type": "string" }
+        },
+        "license": {
+            "type": "string",
+            "enum": ["standard", "exclusive", "commercial"]
+        },
+        "createdAt": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+        }
+    }
+}

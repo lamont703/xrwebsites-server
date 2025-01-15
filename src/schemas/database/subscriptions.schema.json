@@ -1,0 +1,60 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "description": "Subscription schema",
+    "required": ["id", "userId", "plan", "status"],
+    "properties": {
+        "id": {
+            "type": "string",
+            "description": "Unique identifier"
+        },
+        "userId": {
+            "type": "string",
+            "description": "Subscriber's user ID"
+        },
+        "plan": {
+            "type": "string",
+            "enum": ["basic", "pro", "enterprise"]
+        },
+        "status": {
+            "type": "string",
+            "enum": ["active", "cancelled", "expired", "suspended"]
+        },
+        "startDate": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "endDate": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "billingInfo": {
+            "type": "object",
+            "properties": {
+                "amount": { "type": "number" },
+                "currency": { "type": "string" },
+                "interval": { "type": "string" },
+                "paymentMethod": { "type": "string" }
+            }
+        },
+        "features": {
+            "type": "array",
+            "items": { "type": "string" }
+        },
+        "usage": {
+            "type": "object",
+            "properties": {
+                "storage": { "type": "number" },
+                "bandwidth": { "type": "number" },
+                "apiCalls": { "type": "number" }
+            }
+        },
+        "metadata": {
+            "type": "object",
+            "properties": {
+                "promotionCode": { "type": "string" },
+                "referralSource": { "type": "string" }
+            }
+        }
+    }
+}

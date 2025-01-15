@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Real-time Notifications Test</title>
+    <style>
+        .log {
+            margin: 10px 0;
+            padding: 5px;
+            font-family: monospace;
+        }
+
+        .error {
+            color: red;
+            background: #fee;
+        }
+
+        .success {
+            color: green;
+            background: #efe;
+        }
+
+        #status {
+            padding: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Real-time Notifications Test</h2>
+    <div id="status">Disconnected</div>
+    <div id="notifications"></div>
+
+    <script>
+        const status = document.getElementById('status');
+        const notifications = document.getElementById('notifications');
+
+        function log(message, isError = false) {
+            const div = document.createElement('div');
+            div.className = `log ${isError ? 'error' : 'success'}`;
+            div.textContent = `[${new Date().toISOString()}] ${message}`;
+            notifications.insertBefore(div, notifications.firstChild);
+            console.log(message);
+        }
+
+        // Connect to WebSocket server
+        const ws = new WebSocket('ws://localhost:8080/ws');
+
+        ws.onopen = () => {
+            status.textContent = 'Connected';
+            status.style.color = 'green';
+            log('WebSocket connected');
+
+            // Subscribe as test user
+            ws.send(JSON.stringify({
+                type: 'subscribe',
+                userId: 'test_user_123'
+            }));
+        };
+
+        ws.onmessage = (event) => {
+            const data = JSON.parse(event.data);
+            log(`Received: ${JSON.stringify(data, null, 2)}`);
+        };
+
+        ws.onerror = (error) => {
+            status.textContent = 'Error';
+            status.style.color = 'red';
+            log(`WebSocket error: ${error.message}`, true);
+        };
+
+        ws.onclose = () => {
+            status.textContent = 'Disconnected';
+            status.style.color = 'red';
+            log('WebSocket disconnected', true);
+        };
+    </script>
+</body>
+
+</html>

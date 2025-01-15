@@ -2,7 +2,7 @@
 
 ## Core Components (Current)
 
-- **CORE DEPENDENCIES** (Express, etc.)  
+- **CORE DEPENDENCIES** (Express, etc.)
 - **DATABASE & AUTHENTICATION** (Azure Cosmos DB, bcryptjs, jsonwebtoken, express-validator, express-rate-limit)
 - **DEVELOPMENT TOOLS** (nodemon, eslint, prettier, jest, supertest)
 - **CONFIGURATION FILES** (.env, .eslintrc.json, .prettierrc.json, jest.config.js, .gitignore)
@@ -24,8 +24,6 @@
 - **REAL-TIME FEATURES** (WebSocket implementation, Server-Sent Events, Push notifications, Real-time data sync, Live monitoring)
 - **DEVELOPMENT WORKFLOW** (Version control strategy, Code review process, Release management, Feature flagging, A/B testing)
 - **QUALITY ASSURANCE** (Code quality tools, Performance benchmarking, Security auditing, Dependency management, Vulnerability scanning)
-
-
 
 ## Additional Key Concepts
 
@@ -103,6 +101,7 @@
 ### Additional Components
 
 1. Service Architecture
+
 - Microservices vs Monolithic
 - Service discovery
 - Message queues (RabbitMQ, Redis)
@@ -110,6 +109,7 @@
 - WebSocket integration
 
 2. Documentation
+
 - API documentation (Swagger/OpenAPI)
 - Code documentation
 - Architecture diagrams
@@ -117,6 +117,7 @@
 - Contribution guidelines
 
 3. Scalability
+
 - Horizontal/Vertical scaling
 - Load balancing
 - Database sharding
@@ -124,6 +125,7 @@
 - CDN integration
 
 4. Compliance & Standards
+
 - GDPR compliance
 - Data privacy
 - Industry standards
@@ -131,6 +133,7 @@
 - API standards
 
 5. Backup & Recovery
+
 - Database backups
 - Disaster recovery
 - Failover strategies
@@ -140,6 +143,7 @@
 ### Additional Critical Components
 
 1. Infrastructure Management
+
 - Cloud services integration
 - Infrastructure as Code (IaC)
 - Resource provisioning
@@ -147,6 +151,7 @@
 - Cost optimization
 
 2. Third-Party Integrations
+
 - Payment gateways
 - Email services
 - SMS services
@@ -154,6 +159,7 @@
 - Analytics services
 
 3. Real-Time Features
+
 - WebSocket implementation
 - Server-Sent Events
 - Push notifications
@@ -161,6 +167,7 @@
 - Live monitoring
 
 4. Development Workflow
+
 - Version control strategy
 - Code review process
 - Release management
@@ -168,6 +175,7 @@
 - A/B testing
 
 5. Quality Assurance
+
 - Code quality tools
 - Performance benchmarking
 - Security auditing
@@ -222,14 +230,18 @@ Configuration Files
 jest.config.js # Jest configuration
 .gitignore # Git ignore file
 
-
-
 **Development Workflow**
 Initialize project for development with `npm init -y` for package.json  
 Install all Express dependencies with `npm install express` plus all other dependencies  
-Install all Azure Database dependencies with `npm install @azure/cosmos`  plus all other dependencies  
+Install all Azure Database dependencies with `npm install @azure/cosmos` plus all other dependencies  
 Install development tools and configuration file dependencies
 Setup ALL DEPENDENCIES
 
-Once all dependencies are installed set up the version control system
+Once all dependencies are installed set up the version control system using Git and Azure DevOps
+Then set up hidden keys and secrets in dotenv
 
+Then create project structure
+
+Connect to Azure Database
+Test connection to database
+Create database and containers

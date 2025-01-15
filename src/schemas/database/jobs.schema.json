@@ -1,0 +1,76 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "description": "Job listing schema",
+    "required": ["id", "creatorId", "title", "status"],
+    "properties": {
+        "id": {
+            "type": "string",
+            "description": "Unique identifier"
+        },
+        "creatorId": {
+            "type": "string",
+            "description": "ID of job creator"
+        },
+        "type": {
+            "type": "string",
+            "enum": ["job"],
+            "description": "Document type"
+        },
+        "title": {
+            "type": "string",
+            "minLength": 5,
+            "maxLength": 100
+        },
+        "description": {
+            "type": "string",
+            "maxLength": 5000
+        },
+        "status": {
+            "type": "string",
+            "enum": ["draft", "active", "completed", "cancelled"]
+        },
+        "budget": {
+            "type": "object",
+            "properties": {
+                "amount": { "type": "number" },
+                "currency": { "type": "string" },
+                "type": { 
+                    "type": "string",
+                    "enum": ["fixed", "hourly", "range"]
+                }
+            }
+        },
+        "skills": {
+            "type": "array",
+            "items": { "type": "string" }
+        },
+        "deadline": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "applicants": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "userId": { "type": "string" },
+                    "proposal": { "type": "string" },
+                    "bid": { "type": "number" },
+                    "status": { 
+                        "type": "string",
+                        "enum": ["pending", "accepted", "rejected"]
+                    }
+                }
+            }
+        },
+        "createdAt": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+        }
+    }
+}

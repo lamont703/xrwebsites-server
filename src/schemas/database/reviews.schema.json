@@ -1,0 +1,60 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "description": "Review schema",
+    "required": ["id", "targetId", "reviewerId", "rating"],
+    "properties": {
+        "id": {
+            "type": "string",
+            "description": "Unique identifier"
+        },
+        "targetId": {
+            "type": "string",
+            "description": "ID of reviewed entity"
+        },
+        "reviewType": {
+            "type": "string",
+            "enum": ["user", "job", "asset"]
+        },
+        "reviewerId": {
+            "type": "string",
+            "description": "ID of reviewer"
+        },
+        "rating": {
+            "type": "number",
+            "minimum": 1,
+            "maximum": 5
+        },
+        "content": {
+            "type": "string",
+            "maxLength": 1000
+        },
+        "metrics": {
+            "type": "object",
+            "properties": {
+                "quality": { "type": "number" },
+                "communication": { "type": "number" },
+                "timeliness": { "type": "number" }
+            }
+        },
+        "status": {
+            "type": "string",
+            "enum": ["pending", "approved", "rejected", "reported"]
+        },
+        "helpful": {
+            "type": "object",
+            "properties": {
+                "yes": { "type": "number" },
+                "no": { "type": "number" }
+            }
+        },
+        "createdAt": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+        }
+    }
+}

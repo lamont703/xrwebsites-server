@@ -1,0 +1,53 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "description": "Message schema",
+    "required": ["id", "conversationId", "senderId", "content"],
+    "properties": {
+        "id": {
+            "type": "string",
+            "description": "Unique identifier"
+        },
+        "conversationId": {
+            "type": "string",
+            "description": "ID of conversation"
+        },
+        "senderId": {
+            "type": "string",
+            "description": "ID of message sender"
+        },
+        "receiverId": {
+            "type": "string",
+            "description": "ID of message receiver"
+        },
+        "content": {
+            "type": "string",
+            "maxLength": 5000
+        },
+        "type": {
+            "type": "string",
+            "enum": ["text", "image", "file", "system"]
+        },
+        "status": {
+            "type": "string",
+            "enum": ["sent", "delivered", "read"]
+        },
+        "metadata": {
+            "type": "object",
+            "properties": {
+                "fileUrl": { "type": "string" },
+                "fileName": { "type": "string" },
+                "fileSize": { "type": "number" },
+                "mimeType": { "type": "string" }
+            }
+        },
+        "relatedTo": {
+            "type": "string",
+            "description": "ID of related job/asset"
+        },
+        "timestamp": {
+            "type": "string",
+            "format": "date-time"
+        }
+    }
+}

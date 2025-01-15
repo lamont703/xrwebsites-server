@@ -1,0 +1,51 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "description": "Transaction schema",
+    "required": ["id", "userId", "type", "status", "amount"],
+    "properties": {
+        "id": {
+            "type": "string",
+            "description": "Unique identifier"
+        },
+        "userId": {
+            "type": "string",
+            "description": "User who initiated transaction"
+        },
+        "type": {
+            "type": "string",
+            "enum": ["job_payment", "asset_purchase", "subscription", "withdrawal"]
+        },
+        "status": {
+            "type": "string",
+            "enum": ["pending", "completed", "failed", "refunded"]
+        },
+        "amount": {
+            "type": "number"
+        },
+        "currency": {
+            "type": "string",
+            "enum": ["SOL", "USD"]
+        },
+        "relatedId": {
+            "type": "string",
+            "description": "ID of related job/asset/subscription"
+        },
+        "metadata": {
+            "type": "object",
+            "properties": {
+                "paymentMethod": { "type": "string" },
+                "paymentId": { "type": "string" },
+                "fees": { "type": "number" }
+            }
+        },
+        "blockchainTx": {
+            "type": "string",
+            "description": "Blockchain transaction hash"
+        },
+        "timestamp": {
+            "type": "string",
+            "format": "date-time"
+        }
+    }
+}

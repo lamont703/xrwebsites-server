@@ -1,0 +1,64 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "description": "User document schema with RBAC",
+    "required": ["id", "email", "roles", "status"],
+    "properties": {
+        "id": {
+            "type": "string",
+            "description": "Unique identifier"
+        },
+        "type": {
+            "type": "string",
+            "enum": ["user"],
+            "description": "Document type"
+        },
+        "email": {
+            "type": "string",
+            "format": "email",
+            "description": "User email address"
+        },
+        "roles": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "description": "Array of role IDs"
+        },
+        "permissions": {
+            "type": "object",
+            "properties": {
+                "canCreateJobs": { "type": "boolean" },
+                "canBidOnJobs": { "type": "boolean" },
+                "canCreateAssets": { "type": "boolean" },
+                "canSellAssets": { "type": "boolean" }
+            },
+            "description": "User-specific permissions"
+        },
+        "status": {
+            "type": "string",
+            "enum": ["active", "inactive", "suspended"],
+            "description": "Account status"
+        },
+        "accountType": {
+            "type": "string",
+            "enum": ["individual", "business"],
+            "description": "Type of account"
+        },
+        "verificationLevel": {
+            "type": "string",
+            "enum": ["basic", "verified", "premium"],
+            "description": "Account verification level"
+        },
+        "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Account creation timestamp"
+        },
+        "lastLogin": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Last login timestamp"
+        }
+    }
+}

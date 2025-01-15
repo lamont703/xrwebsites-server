@@ -1,0 +1,75 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "description": "Role definition schema",
+    "required": ["id", "name", "permissions"],
+    "properties": {
+        "id": {
+            "type": "string",
+            "description": "Unique identifier"
+        },
+        "name": {
+            "type": "string",
+            "enum": ["admin", "business", "developer", "user", "creator"],
+            "description": "Role name"
+        },
+        "permissions": {
+            "type": "object",
+            "properties": {
+                "jobs": {
+                    "type": "object",
+                    "properties": {
+                        "create": { "type": "boolean" },
+                        "read": { "type": "boolean" },
+                        "update": { "type": "boolean" },
+                        "delete": { "type": "boolean" },
+                        "bid": { "type": "boolean" }
+                    }
+                },
+                "assets": {
+                    "type": "object",
+                    "properties": {
+                        "create": { "type": "boolean" },
+                        "read": { "type": "boolean" },
+                        "update": { "type": "boolean" },
+                        "delete": { "type": "boolean" },
+                        "sell": { "type": "boolean" }
+                    }
+                },
+                "users": {
+                    "type": "object",
+                    "properties": {
+                        "read": { "type": "boolean" },
+                        "message": { "type": "boolean" }
+                    }
+                },
+                "admin": {
+                    "type": "object",
+                    "properties": {
+                        "accessPanel": { "type": "boolean" },
+                        "manageUsers": { "type": "boolean" },
+                        "manageContent": { "type": "boolean" }
+                    }
+                }
+            }
+        },
+        "level": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 5,
+            "description": "Role hierarchy level"
+        },
+        "description": {
+            "type": "string",
+            "description": "Role description"
+        },
+        "createdAt": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+        }
+    }
+}

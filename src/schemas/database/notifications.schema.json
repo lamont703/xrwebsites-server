@@ -1,0 +1,50 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "description": "Notification schema for real-time updates",
+    "required": ["id", "userId", "type", "status"],
+    "properties": {
+        "id": {
+            "type": "string",
+            "description": "Unique identifier"
+        },
+        "userId": {
+            "type": "string",
+            "description": "Target user ID"
+        },
+        "type": {
+            "type": "string",
+            "enum": [
+                "job_update",
+                "wallet_update",
+                "asset_update",
+                "message_received",
+                "bid_received",
+                "transaction_complete",
+                "review_received"
+            ]
+        },
+        "status": {
+            "type": "string",
+            "enum": ["unread", "read", "archived"]
+        },
+        "data": {
+            "type": "object",
+            "description": "Notification payload",
+            "properties": {
+                "entityId": { "type": "string" },
+                "entityType": { "type": "string" },
+                "action": { "type": "string" },
+                "preview": { "type": "string" }
+            }
+        },
+        "timestamp": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "expiresAt": {
+            "type": "string",
+            "format": "date-time"
+        }
+    }
+} 
