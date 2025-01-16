@@ -1,0 +1,46 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "description": "Wallet schema for token management",
+    "required": ["id", "tenantId", "userId", "balance", "status"],
+    "properties": {
+        "id": {
+            "type": "string",
+            "description": "Unique wallet identifier"
+        },
+        "tenantId": {
+            "type": "string",
+            "description": "Associated tenant organization"
+        },
+        "userId": {
+            "type": "string",
+            "description": "Owner of the wallet"
+        },
+        "balance": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Current token balance"
+        },
+        "status": {
+            "type": "string",
+            "enum": ["active", "frozen", "closed"],
+            "description": "Wallet status"
+        },
+        "lastUpdated": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Last balance update timestamp"
+        },
+        "metadata": {
+            "type": "object",
+            "properties": {
+                "name": { "type": "string" },
+                "type": { "type": "string" },
+                "tags": { 
+                    "type": "array",
+                    "items": { "type": "string" }
+                }
+            }
+        }
+    }
+} 

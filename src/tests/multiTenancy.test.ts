@@ -27,7 +27,7 @@ async function testMultiTenancy() {
         });
 
         const { database } = await client.databases.createIfNotExists({
-            id: 'XRWebsites'
+            id: 'xrwebsites-db-2024'
         });
 
         // Ensure all required containers exist

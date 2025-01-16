@@ -1,51 +1,65 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "type": "object",
-    "description": "Transaction schema",
-    "required": ["id", "userId", "type", "status", "amount"],
+    "description": "Transaction record schema",
+    "required": ["id", "tenantId", "type", "status", "amount", "timestamp"],
     "properties": {
         "id": {
             "type": "string",
-            "description": "Unique identifier"
+            "description": "Unique transaction identifier"
         },
-        "userId": {
+        "tenantId": {
             "type": "string",
-            "description": "User who initiated transaction"
+            "description": "Associated tenant organization"
         },
         "type": {
             "type": "string",
-            "enum": ["job_payment", "asset_purchase", "subscription", "withdrawal"]
+            "enum": ["purchase", "transfer", "refund", "withdrawal", "deposit"],
+            "description": "Type of transaction"
         },
         "status": {
             "type": "string",
-            "enum": ["pending", "completed", "failed", "refunded"]
+            "enum": ["pending", "completed", "failed", "reversed"],
+            "description": "Current status of the transaction"
         },
         "amount": {
-            "type": "number"
+            "type": "number",
+            "description": "Transaction amount in tokens"
         },
-        "currency": {
+        "timestamp": {
             "type": "string",
-            "enum": ["SOL", "USD"]
+            "format": "date-time",
+            "description": "When the transaction occurred"
         },
-        "relatedId": {
-            "type": "string",
-            "description": "ID of related job/asset/subscription"
+        "from": {
+            "type": "object",
+            "properties": {
+                "userId": { "type": "string" },
+                "walletId": { "type": "string" }
+            }
+        },
+        "to": {
+            "type": "object",
+            "properties": {
+                "userId": { "type": "string" },
+                "walletId": { "type": "string" }
+            }
         },
         "metadata": {
             "type": "object",
             "properties": {
-                "paymentMethod": { "type": "string" },
-                "paymentId": { "type": "string" },
-                "fees": { "type": "number" }
+                "assetId": { "type": "string" },
+                "description": { "type": "string" },
+                "reference": { "type": "string" }
             }
         },
-        "blockchainTx": {
-            "type": "string",
-            "description": "Blockchain transaction hash"
-        },
-        "timestamp": {
-            "type": "string",
-            "format": "date-time"
+        "errorDetails": {
+            "type": "object",
+            "properties": {
+                "code": { "type": "string" },
+                "message": { "type": "string" },
+                "timestamp": { "type": "string", "format": "date-time" }
+            }
         }
     }
 }

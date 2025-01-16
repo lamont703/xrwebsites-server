@@ -70,7 +70,7 @@ async function testRBAC() {
 
         // Ensure database exists
         const { database } = await client.databases.createIfNotExists({
-            id: 'XRWebsites'
+            id: 'xrwebsites-db-2024'
         });
         console.log('✓ Connected to database:', database.id);
 
