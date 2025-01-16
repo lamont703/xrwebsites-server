@@ -1,0 +1,68 @@
+{
+  "indexingPolicy": {
+    "indexingMode": "consistent",
+    "automatic": true,
+    "includedPaths": [
+      {
+        "path": "/tenantId/?",
+        "indexes": [
+          {
+            "kind": "Range",
+            "dataType": "String",
+            "precision": -1
+          }
+        ]
+      },
+      {
+        "path": "/userId/?",
+        "indexes": [
+          {
+            "kind": "Hash",
+            "dataType": "String",
+            "precision": -1
+          }
+        ]
+      },
+      {
+        "path": "/balance/?",
+        "indexes": [
+          {
+            "kind": "Range",
+            "dataType": "Number",
+            "precision": -1
+          }
+        ]
+      },
+      {
+        "path": "/status/?",
+        "indexes": [
+          {
+            "kind": "Hash",
+            "dataType": "String",
+            "precision": 3
+          }
+        ]
+      }
+    ],
+    "excludedPaths": [
+      {
+        "path": "/metadata/*"
+      },
+      {
+        "path": "/_etag/?"
+      }
+    ],
+    "compositeIndexes": [
+      [
+        {
+          "path": "/tenantId",
+          "order": "ascending"
+        },
+        {
+          "path": "/balance",
+          "order": "descending"
+        }
+      ]
+    ]
+  }
+} 

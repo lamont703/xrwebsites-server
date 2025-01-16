@@ -1,0 +1,91 @@
+{
+  "indexingPolicy": {
+    "indexingMode": "consistent",
+    "automatic": true,
+    "includedPaths": [
+      {
+        "path": "/tenantId/?",
+        "indexes": [
+          {
+            "kind": "Range",
+            "dataType": "String",
+            "precision": -1
+          }
+        ]
+      },
+      {
+        "path": "/type/?",
+        "indexes": [
+          {
+            "kind": "Hash",
+            "dataType": "String",
+            "precision": 3
+          }
+        ]
+      },
+      {
+        "path": "/status/?",
+        "indexes": [
+          {
+            "kind": "Hash",
+            "dataType": "String",
+            "precision": 3
+          }
+        ]
+      },
+      {
+        "path": "/amount/?",
+        "indexes": [
+          {
+            "kind": "Range",
+            "dataType": "Number",
+            "precision": -1
+          }
+        ]
+      },
+      {
+        "path": "/timestamp/?",
+        "indexes": [
+          {
+            "kind": "Range",
+            "dataType": "String",
+            "precision": -1
+          }
+        ]
+      }
+    ],
+    "excludedPaths": [
+      {
+        "path": "/metadata/*"
+      },
+      {
+        "path": "/errorDetails/*"
+      },
+      {
+        "path": "/_etag/?"
+      }
+    ],
+    "compositeIndexes": [
+      [
+        {
+          "path": "/tenantId",
+          "order": "ascending"
+        },
+        {
+          "path": "/timestamp",
+          "order": "descending"
+        }
+      ],
+      [
+        {
+          "path": "/tenantId",
+          "order": "ascending"
+        },
+        {
+          "path": "/amount",
+          "order": "ascending"
+        }
+      ]
+    ]
+  }
+} 

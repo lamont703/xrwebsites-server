@@ -16,7 +16,11 @@
     "test:redis": "tsx src/tests/redis.test.ts",
     "test:ratelimit:final": "tsx src/tests/rateLimiter.final.test.ts",
     "test:cache": "tsx src/tests/cache.test.ts",
-    "test:transaction": "tsx src/tests/transaction.complete.test.ts"
+    "test:transaction": "tsx src/tests/transaction.complete.test.ts",
+    "test:search": "vitest run src/tests/search/*.test.tsx",
+    "test:search:watch": "vitest watch src/tests/search/*.test.tsx",
+    "test:search:integration": "vitest run src/tests/search/integration.test.tsx --testTimeout=10000",
+    "test:search:integration:watch": "vitest watch src/tests/search/integration.test.tsx --testTimeout=10000"
   },
   "keywords": [],
   "author": "",
@@ -24,9 +28,10 @@
   "description": "",
   "dependencies": {
     "@azure/app-configuration": "^1.8.0",
-    "@azure/cosmos": "^4.0.0",
+    "@azure/cosmos": "^4.2.0",
     "@azure/identity": "^4.5.0",
     "@azure/keyvault-secrets": "^4.9.0",
+    "@azure/search-documents": "^12.1.0",
     "@azure/storage-blob": "^12.26.0",
     "@azure/storage-queue": "^12.25.0",
     "applicationinsights": "^3.4.0",
@@ -89,7 +94,8 @@
     "ts-jest": "^29.2.5",
     "ts-node": "^10.0.0",
     "tsx": "^4.19.2",
-    "typescript": "^5.0.0"
+    "typescript": "^5.0.0",
+    "vitest": "^2.1.8"
   },
   "lint-staged": {
     "*.{js,ts}": [

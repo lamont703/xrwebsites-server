@@ -1,0 +1,88 @@
+{
+  "indexingPolicy": {
+    "indexingMode": "consistent",
+    "automatic": true,
+    "includedPaths": [
+      {
+        "path": "/tenantId/?",
+        "indexes": [
+          {
+            "kind": "Range",
+            "dataType": "String",
+            "precision": -1
+          }
+        ]
+      },
+      {
+        "path": "/email/?",
+        "indexes": [
+          {
+            "kind": "Hash",
+            "dataType": "String",
+            "precision": -1
+          }
+        ]
+      },
+      {
+        "path": "/role/?",
+        "indexes": [
+          {
+            "kind": "Hash",
+            "dataType": "String",
+            "precision": 3
+          }
+        ]
+      },
+      {
+        "path": "/status/?",
+        "indexes": [
+          {
+            "kind": "Hash",
+            "dataType": "String",
+            "precision": 3
+          }
+        ]
+      },
+      {
+        "path": "/searchableText/?",
+        "indexes": [
+          {
+            "kind": "Range",
+            "dataType": "String",
+            "precision": -1
+          }
+        ]
+      }
+    ],
+    "excludedPaths": [
+      {
+        "path": "/metadata/*"
+      },
+      {
+        "path": "/_etag/?"
+      }
+    ],
+    "compositeIndexes": [
+      [
+        {
+          "path": "/tenantId",
+          "order": "ascending"
+        },
+        {
+          "path": "/role",
+          "order": "ascending"
+        }
+      ],
+      [
+        {
+          "path": "/tenantId",
+          "order": "ascending"
+        },
+        {
+          "path": "/status",
+          "order": "ascending"
+        }
+      ]
+    ]
+  }
+} 
